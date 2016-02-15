@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GS DB Playground</title>
+</head>
+<body>
+	<form id="example-form">
+	    <label for="name">Name</label>
+	    <input id="name" name="Name" type="text" value="" />
+	    <input type="submit" value="Send" />
+	</form>
+
+	<!-- JavaScript POST request. -->
+	<script>
+	function sendData() {
+	  var XHR = new XMLHttpRequest();
+	  var FD  = new FormData(form);
+	  XHR.addEventListener("load", function(event) {
+	  	alert(event.target.responseText);
+	  });
+	  XHR.addEventListener("error", function(event) {
+	  	alert(event.target.responseText);
+	  });
+	  XHR.open("GET", "https://script.google.com/macros/s/AKfycbxDGzL3aHSguXkoNtuck3FdoQMpUlJx9S1bs9Zj4ujpiRcXw9Qn/exec");
+	  XHR.send(FD);
+	}
+	var form = document.getElementById("example-form");
+	form.addEventListener("submit", function (event) {
+    	event.preventDefault();
+    	sendData();
+  	});
+	</script>
+</body>
+</html>
